@@ -2,17 +2,18 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 class PostTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
-    }
+    use RefreshDatabase;
+
+
+   /** @test */
+   public function it_has_a_path()
+   {
+      $post = create('App\Post');
+      $this->assertEquals('post/'.$post->id,$post->path());
+   }
 }
