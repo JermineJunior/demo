@@ -14,6 +14,6 @@ class PostTest extends TestCase
    public function it_has_a_path()
    {
       $post = create('App\Post');
-      $this->assertEquals('post/'.$post->id,$post->path());
+      $this->assertEquals('posts/' . $post->id,$post->path());
    }
 }
