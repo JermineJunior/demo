@@ -627,6 +627,10 @@ video {
   width: 24rem;
 }
 
+.h-72{
+  height: 22rem;
+}
+
 .worksans {
   font-family: 'Work Sans', sans-serif;
 }
