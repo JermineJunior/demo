@@ -29,7 +29,12 @@ class PostsController extends Controller
  
     public function store(Request $request)
     {
-        //
+        $post =  Post::create([
+             'title' =>  request('title'),
+             'body'  =>  request('body')
+         ]);
+
+         return redirect($post->path());
     }
 
   
