@@ -631,6 +631,14 @@ video {
   height: 22rem;
 }
 
+.w-custom{
+  width: 40rem;
+}
+
+.container{
+  max-width: 1400px;
+}
+
 .worksans {
   font-family: 'Work Sans', sans-serif;
 }

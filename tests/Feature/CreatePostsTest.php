@@ -18,7 +18,6 @@ class CreatePostsTest extends TestCase
         $this->post('/posts',$post->toArray())
                    ->assertStatus(302)
                     ->assertRedirect('/login');
-                      
     }
 
    /** @test */
@@ -29,10 +28,9 @@ class CreatePostsTest extends TestCase
       $post = $this->make('App\Post');
 
       $this->post('/posts',$post->toArray());
-                    
+
       $this->get($post->path())
             ->assertSee($post->title)
-                ->assertSee($post->body);      
-
+                ->assertSee($post->body);
    }
 }

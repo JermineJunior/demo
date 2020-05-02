@@ -2,18 +2,18 @@
 
 @section('content')
 <div class="container mx-auto mb-4">
-    <div class="flex items-center justify-between">
-        <a href="#" class="text-xl text-blue-700 font-semibold">
+    <div class="flex items-center justify-between px-6">
+        <a href="#" class="text-xl text-blue-400 font-semibold">
             Post
         </a>
-    
+
         <a href="#" class="px-2 py-1 rounded-lg shadow-lg bg-blue-500 text-gray-100">
             Create Post
         </a>
     </div>
-    <div class="px-10 my-4 py-6 bg-white rounded-lg shadow-md mx-1 my-4">
+    <div class="w-custom px-6 my-4 py-6 bg-white rounded-lg shadow-md mx-8 h-56 md:h-72">
         <div class="flex justify-between items-center">
-            <span class="font-light text-gray-600">{{ $post->created_at }}</span>
+            <span class="font-light text-gray-600">Published {{ $post->created_at->diffForHumans() }}</span>
             <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">PHP</a>
         </div>
         <div class="mt-2">
