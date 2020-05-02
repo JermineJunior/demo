@@ -623,6 +623,10 @@ video {
   }
 }
 
+.w-128{
+  width: 24rem;
+}
+
 .worksans {
   font-family: 'Work Sans', sans-serif;
 }
