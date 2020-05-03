@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         $posts = Post::all();
  
-        $latest = Post::find(Post::max('id'));
+        $latest = Post::latest();
 
        return view('posts.index',compact('posts','latest')); 
        

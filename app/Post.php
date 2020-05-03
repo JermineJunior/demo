@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -12,5 +13,18 @@ class Post extends Model
     {
         return 'posts/'.$this->id;
     }
+    
+    public static function latest()
+    {
+        $latest = Post::find(Post::max('id'));
+         
+        return $latest;
+    }
 
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+   
 }

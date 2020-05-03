@@ -42,4 +42,5 @@ class PostTest extends TestCase
         $this->get('/posts/'.$this->post->id)
             ->assertSee($this->post->title);
     }
+
 }
