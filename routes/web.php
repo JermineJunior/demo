@@ -24,3 +24,5 @@ Route::post('/posts', 'PostsController@store')->name('posts.store');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profiles/{user}', 'ProfileController@show');
