@@ -18,11 +18,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
-Route::get('/posts', 'PostsController@index')->name('posts');
-Route::post('/posts', 'PostsController@store')->name('posts.store');
-
+Route::resource('/posts','PostsController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profiles/{user}', 'ProfileController@show');
+Route::get('/profiles/{user}', 'ProfileController@show')->name('profile');
