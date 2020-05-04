@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Post;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostTest extends TestCase
@@ -14,7 +14,7 @@ class PostTest extends TestCase
      protected function setUp(): void
      {
          parent::setUp();
-         $this->post = create('App\Post');
+         $this->post = create(Post::class);
      }
      
     /** @test */
@@ -35,7 +35,7 @@ class PostTest extends TestCase
     }
     
     /** @test */
-    public function an_authinticated_user_can_view_a_post()
+    public function an_authinticated_user_can_view_single_post()
     {
         $this->signIn();
 

@@ -26,9 +26,4 @@ abstract class TestCase extends BaseTestCase
     {
       return factory($class,$attr)->make();
     }
-   
-    protected function raw($class,$attr = [])
-    {
-        return factory($class,$attr)->raw();
-    }
 }

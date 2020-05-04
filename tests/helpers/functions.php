@@ -10,3 +10,4 @@ function make($class,$attr = [])
    return factory($class,$attr)->make();
 }
 
+   
