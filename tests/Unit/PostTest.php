@@ -12,7 +12,8 @@ class PostTest extends TestCase
    /** @test */
    public function it_has_a_path()
    {
-      $post = create(Post::class);
+      $user = create('App\User');
+      $post = factory(Post::class)->create(['user_id' =>  $user->id]);
       $this->assertEquals('posts/' . $post->id,$post->path());
    }
 }

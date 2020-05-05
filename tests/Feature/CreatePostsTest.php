@@ -14,26 +14,11 @@ class CreatePostsTest extends TestCase
     /** @test */
     public function guests_can_not_create_posts()
     {
-        $post = $this->make(Post::class);
+        $user = create('App\User');
+        $post = factory(Post::class)->make(['user_id' =>  $user->id]);
 
         $this->post('/posts',$post->toArray())
                    ->assertStatus(302)
                     ->assertRedirect('/login');
     }
-
-   /** @test */
-   public function an_authinticated_user_can_create_posts()
-   {
-      $this->signIn();
-
-      $post = $this->make(Post::class);
-
-      $this->post('/posts',$post->toArray());
-
-      $this->get($post->path())
-          ->assertStatus(200)
-            ->assertSee($post->title)
-                ->assertSee($post->body);
-               
-   }
 }

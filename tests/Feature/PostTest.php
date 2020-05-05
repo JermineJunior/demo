@@ -14,7 +14,9 @@ class PostTest extends TestCase
      protected function setUp(): void
      {
          parent::setUp();
-         $this->post = create(Post::class);
+        
+      $user = create('App\User');
+      $this->post = factory(Post::class)->create(['user_id' =>  $user->id]);
      }
      
     /** @test */

@@ -17,6 +17,6 @@ class UserTest extends TestCase
 
        $this->get("/profiles/{$user->name}")
                     ->assertSee($user->name);
-       
+
     }
 }
