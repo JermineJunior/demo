@@ -1,6 +1,10 @@
 @tailwind base;
 
 @tailwind components;
+
+.w-72{
+    width: 22rem;
+}
 .w-128{
     width: 24rem;
 }

@@ -2,25 +2,16 @@
 
 @section('content')
 <div class="flex justify-between container mx-auto">
-    <div class="">
-        <div class="flex items-center justify-between px-4">
-            <a href="#" class="text-xl text-blue-400 font-semibold">
-                Post
-            </a>
-        
-            <a href="#" class="px-2 py-1 rounded-lg shadow-lg bg-blue-500 text-gray-100">
-                Create Post
-            </a>
-        </div>
-        <div class="flex items-center flex-wrap px-4 mt-16">
+  <div class="">
+    <div class="flex items-center flex-wrap px-4 mt-8">
         @forelse ($posts as $post)
         <div class="w-full px-10 my-4 py-6 bg-white rounded-lg shadow-md mx-4 h-56 md:h-72">
             <div class="flex justify-between items-center">
                 <span class="font-light text-gray-600">Posted{{ $post->created_at->diffForHumans() }}</span>
-                <a class="px-2 py-1 bg-blue-500 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">Laravel</a>
+                <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">Laravel</a>
             </div>
             <div class="mt-2">
-                <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">
+                <a class="text-2xl text-gray-700 font-bold hover:text-gray-600 capitalize" href="#">
                     {{ $post->title }}
                 </a>
                 <p class="mt-2 text-gray-600">
@@ -44,16 +35,56 @@
         </div>
     </div>
     <div class="side">
-        <div class="flex flex-col bg-white px-8 py-6 max-w-md rounded-lg shadow-md h-64 w-128 mt-32">
+        <div class="flex flex-col bg-white px-8 py-6 max-w-md rounded-lg shadow-md lg:w-128 mt-12 md:w-72 md:mr-3">
             <div class="flex justify-center items-center">
-                <a class="px-2 py-1 bg-blue-500 text-sm text-gray-100 rounded hover:bg-gray-500" href="#">
+                <a class="px-2 py-1 bg-gray-600 text-lg text-gray-100 rounded" href="#">
+                    Categories
+                </a>
+            </div>
+            <div class="mt-4">
+                <ul>
+                    <li>
+                        <a class="inline-block mx-1 my-2 px-2 py-1 bg-gray-600 text-sm text-gray-100 rounded hover:bg-gray-500">
+                            Alpine
+                        </a>
+                    </li>
+                    <li>
+                        <a class="inline-block mx-1 my-2 px-2 py-1 bg-gray-600 text-sm text-gray-100 rounded hover:bg-gray-500">
+                            Laravel
+                        </a>
+                    </li>
+                    <li>
+                        <a class="inline-block mx-1 my-2 px-2 py-1 bg-gray-600 text-sm text-gray-100 rounded hover:bg-gray-500">
+                            React js
+                        </a>
+                    </li>
+                    <li>
+                        <a class="inline-block mx-1 my-2 px-2 py-1 bg-gray-600 text-sm text-gray-100 rounded hover:bg-gray-500">
+                            Vue js
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex flex-col bg-white px-8 py-6 max-w-md rounded-lg shadow-md xl:w-128 mt-12 md:w-72 md:mr-3">
+            <div class="flex justify-center items-center">
+                <a class="px-2 py-1 bg-gray-600 text-lg text-gray-100 rounded hover:bg-gray-400" href="#">
                     Authors
                 </a>
             </div>
+            <ol class="py-3 px-2 mt-4 text-gray-800 text-lg">
+                @foreach ($users as $user)
+                    <li>
+                        <a href="{{ route('profile',$user->name) }}">
+                            {{ $user->name }}
+                        </a>
+                    </li>
+                @endforeach
+            </ol>
         </div>
-        <div class="flex flex-col bg-white px-8 py-6 max-w-md rounded-lg shadow-md h-64 w-128 mt-12">
+        <div class="flex flex-col bg-white px-8 py-6 max-w-md rounded-lg shadow-md xl:w-128 mt-12 md:w-72 md:mr-3">
             <div class="flex justify-center items-center">
-                <a class="px-2 py-1 bg-blue-500 text-sm text-gray-100 rounded hover:bg-gray-500" href="#">
+                <a class="px-2 py-1 bg-gray-600 text-lg text-gray-100 rounded" href="#">
                     {{ $latest->title }}
                 </a>
             </div>
