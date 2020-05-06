@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\User;
-use Illuminate\Database\Eloquent\Collection;
 use Tests\TestCase;
+use App\{User,Post};
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
@@ -18,16 +18,24 @@ class UserTest extends TestCase
 
        $this->get("/profiles/{$user->name}")
                     ->assertSee($user->name);
-
     }
 
+     /** @test  */
+     public function users_database_has_expected_columns()
+     {
+         $this->assertTrue( 
+           Schema::hasColumns('users', [
+             'id','name', 'email', 'email_verified_at', 'password'
+         ]), 1);
+     }
+
     /** @test */
-    public function a_user_have_his_own_posts()
+    public function a_user_have_many_posts()
     {
        $user = create(User::class);
        
        $post = factory('App\Post')->create(['user_id'  => $user->id]);
 
-       $this->assertInstanceOf(Collection::class,$user->posts);
+       $this->assertEquals(1, $user->posts->count()); 
     }
 }
