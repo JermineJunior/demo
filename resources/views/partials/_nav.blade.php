@@ -1,5 +1,5 @@
 <body class="bg-gray-200">
-    <nav id="header" class="w-full z-30 top-0 py-1 bg-gray-100 shadow-md">
+    <nav id="header" class="w-full z-30 top-0 py-1 bg-white shadow-lg border-b border-blue-400">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
 
             <label for="menu-toggle" class="cursor-pointer md:hidden block">
@@ -10,17 +10,20 @@
             </label>
             <input class="hidden" type="checkbox" id="menu-toggle">
 
-            <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
+            <div class="hidde md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
                 <nav>
                     <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
-                        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-2 lg:-ml-2" href="/posts">Articles</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/">Home</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/posts">Posts</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">About</a></li>
+                        <li> <input type="search" name="" class="appearance-none  md:hidden rounded-lg block w-1/2 bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ..."></li>
                     </ul>
                 </nav>
             </div>
 
-            <div class="order-1 md:order-2 text-blue-600">
-                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-xl " href="/">
-                    Jack Blog
+            <div class="order-1 md:order-2 text-blue-600 ml-2">
+                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-2xl " href="/">
+                    <span>Web</span><span class="text-gray-800">Site</span>
                 </a>
             </div>
 
@@ -35,9 +38,9 @@
                 </a>
                 @endif
                 @else
-                <input type="search" name="" class="appearance-none rounded-lg block w-full bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ...">
+                <input type="search" name="" class="appearance-none hidden md:block rounded-lg block w-full bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ...">
                 <a href="{{ route('logout') }}"
-                   class="no-underline hover:underline text-blue-600 text-base py-3 px-4"
+                   class="no-underline hover:text-gray-800 text-blue-600 text-base py-3 px-4"
                    onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">

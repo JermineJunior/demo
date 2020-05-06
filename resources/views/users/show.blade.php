@@ -2,11 +2,16 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-2">
-    <h2 class="text-gray-800 text-2xl py-3 border-b border-blue-300">
-        {{ $profileUser->name }}
-        <small> signed in {{ $profileUser->created_at->diffForHumans() }}</small>
-    </h2>
-    <div class="content mt-4 ">
+    <header class="flex items-center justify-between border-b border-blue-300">
+        <h2 class="text-gray-800 text-2xl py-3">
+            {{ $profileUser->name }}
+            <small> signed in {{ $profileUser->created_at->diffForHumans() }}</small>
+        </h2>
+        <div>
+            <img class="mx-4 w-12 h-12 border border-blue-400 shadow object-cover rounded-full hidden sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
+        </div>
+    </header>
+    <div class="content mt-4">
         <h3 class="text-xl">Articles by {{ $profileUser->name }}:</h3>
         <ul class="mt-2 text-gray-800">
             @forelse ($profileUser->posts as $post)
