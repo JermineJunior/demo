@@ -24,8 +24,8 @@
                 </nav>
             </div>
 
-            <div class="order-1 md:order-2 text-blue-600 ml-2">
-                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-4xl " href="/">
+            <div class="order-1 md:order-2 text-blue-600 -ml-8">
+                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-2xl " href="/">
                     <span>Web</span><span class="text-gray-800">Site</span>
                 </a>
             </div>

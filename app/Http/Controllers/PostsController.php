@@ -16,7 +16,7 @@ class PostsController extends Controller
  
     public function index()
     {
-        $posts = Post::latest()->paginate(5)->get();
+        $posts = Post::latest()->paginate(4);
   
         $users = User::all();
 
@@ -29,7 +29,7 @@ class PostsController extends Controller
   
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
  
@@ -37,9 +37,13 @@ class PostsController extends Controller
     {
         $validated = $request->validated();
 
-        $post =  Post::create([ $validated ]);
+        $post =  Post::create([ 
+            'user_id' => request('user_id'), 
+            'title' => request('title') ,
+            'body'  =>  request('body')
+        ]);
 
-        return redirect($post->path(),200);
+        return redirect($post->path());
     }
 
   

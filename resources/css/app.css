@@ -33,4 +33,11 @@
 .hover\:grow:hover {
     transform: scale(1.02);
 }
+.pagination{
+    @apply flex;
+}
+.page-item{
+    @apply mx-1 px-3 py-2 bg-gray-200 text-gray-700 rounded-lg;
+}
+
 @tailwind utilities;

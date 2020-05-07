@@ -6,8 +6,7 @@
         <a href="#" class="text-xl text-blue-400 font-semibold">
             Post
         </a>
-
-        <a href="#" class="px-2 py-1 rounded-lg shadow-lg bg-blue-500 text-gray-100">
+        <a href="/posts/create" class="px-2 py-1 rounded-lg shadow-lg bg-blue-500 text-gray-100">
             Create Post
         </a>
     </div>
