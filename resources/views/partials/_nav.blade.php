@@ -10,19 +10,22 @@
             </label>
             <input class="hidden" type="checkbox" id="menu-toggle">
 
-            <div class="hidde md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
+            <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
                 <nav>
                     <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
+                        <li class="inline-block no-underline hover:text-black font-medium text-lg px-4 lg:-ml-2">
+                            <img src="{{ asset('images/logo.png') }}" alt="brand" class="w-10">
+                        </li>
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/">Home</a></li>
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/posts">Posts</a></li>
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">About</a></li>
-                        <li> <input type="search" name="" class="appearance-none  md:hidden rounded-lg block w-1/2 bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ..."></li>
+                        <li> <input type="search" name="" class="appearance-none  md:hidden rounded-lg mx-3 block w-1/2 bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ..."></li>
                     </ul>
                 </nav>
             </div>
 
             <div class="order-1 md:order-2 text-blue-600 ml-2">
-                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-2xl " href="/">
+                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-4xl " href="/">
                     <span>Web</span><span class="text-gray-800">Site</span>
                 </a>
             </div>
