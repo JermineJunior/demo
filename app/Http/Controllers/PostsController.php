@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\{User,Post};
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBlogPost;
 
 class PostsController extends Controller
 {
@@ -15,7 +16,7 @@ class PostsController extends Controller
  
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->paginate(5)->get();
   
         $users = User::all();
 
@@ -32,14 +33,13 @@ class PostsController extends Controller
     }
 
  
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
-        $post =  Post::create([
-             'title' =>  request('title'),
-             'body'  =>  request('body')
-         ]);
+        $validated = $request->validated();
 
-         return redirect($post->path());
+        $post =  Post::create([ $validated ]);
+
+        return redirect($post->path(),200);
     }
 
   

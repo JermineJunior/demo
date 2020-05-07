@@ -10,15 +10,23 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class CreatePostsTest extends TestCase
 {
     use RefreshDatabase;
+    
+    protected $user;
+    protected $post;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->user = create('App\User');
+        $this->post = factory(Post::class)->make(['user_id' =>  $this->user->id]);
+    }
+    
     /** @test */
     public function guests_can_not_create_posts()
-    {
-        $user = create('App\User');
-        $post = factory(Post::class)->make(['user_id' =>  $user->id]);
-
-        $this->post('/posts',$post->toArray())
-                   ->assertStatus(302)
-                    ->assertRedirect('/login');
+    {  
+        $this->post('/posts',$this->post->toArray())
+        ->assertStatus(302)
+        ->assertRedirect('/login');
     }
 }

@@ -10,6 +10,14 @@ class PostTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected $user;
+
+    protected function setUp(): void
+    {
+       parent::setUp();
+
+       $this->user = create('App\User');
+    }
    /** @test */
    public function posts_db_has_the_expected_coulmns()
    {
@@ -22,16 +30,14 @@ class PostTest extends TestCase
    /** @test */
    public function it_has_a_path()
    {
-      $user = create('App\User');
-      $post = factory(Post::class)->create(['user_id' =>  $user->id]);
+      $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
       $this->assertEquals('posts/' . $post->id,$post->path());
    }
 
    /** @test */
    public function it_can_fetch_latest()
    {
-      $user = create('App\User');
-      $post = factory(Post::class,3)->create(['user_id' =>  $user->id]);
+      $post = factory(Post::class,3)->create(['user_id' =>  $this->user->id]);
 
       $latest = Post::latest();
 
@@ -42,10 +48,8 @@ class PostTest extends TestCase
    /** @test */
    public function a_post_belongs_to_a_user()
    {
-      $user = create('App\User');
-      $post = factory(Post::class)->create(['user_id' =>  $user->id]);
+      $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
       
-
       $this->assertInstanceOf(User::class,$post->users);
    }
 
