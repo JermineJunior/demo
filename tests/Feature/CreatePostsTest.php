@@ -29,4 +29,17 @@ class CreatePostsTest extends TestCase
         ->assertStatus(302)
         ->assertRedirect('/login');
     }
+
+    /** @test */
+    public function authinticated_users_can_create_posts()
+    {
+        $this->signIn();
+       
+        $this->post('/posts',$this->post->toArray());
+
+        $this->get($this->post->path())
+               ->assertSee($this->post->title)
+                    ->assertSee($this->post->body);
+
+    }
 }

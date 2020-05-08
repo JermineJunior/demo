@@ -21,7 +21,7 @@ class PostTest extends TestCase
     }
        
     /** @test */
-    public function non_authinticated_users_can_not_view_post()
+    public function guests_can_not_view_post()
     {
         $this->get('/posts')
         ->assertStatus(302)
@@ -34,7 +34,8 @@ class PostTest extends TestCase
         $this->signIn();
         
         $this->get('/posts')
-        ->assertSee($this->post->title);
+            ->assertSee($this->post->title)
+            ->assertSee($this->post->body);
     }
     
     /** @test */
@@ -42,8 +43,10 @@ class PostTest extends TestCase
     {
         $this->signIn();
         
-        $this->get('/posts/'.$this->post->id)
-        ->assertSee($this->post->title);
+        $this->get($this->post->path())
+         ->assertSee($this->post->title)
+          ->assertSee($this->post->body);
+
     }
     
 }

@@ -11,6 +11,15 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
+    /** @test  */
+    public function users_database_has_expected_columns()
+    {
+        $this->assertTrue( 
+          Schema::hasColumns('users', [
+            'id','name', 'email', 'email_verified_at', 'password'
+        ]), 1);
+    }
+
     /** @test */
     public function a_user_has_a_profile()
     {
@@ -19,15 +28,6 @@ class UserTest extends TestCase
        $this->get("/profiles/{$user->name}")
                     ->assertSee($user->name);
     }
-
-     /** @test  */
-     public function users_database_has_expected_columns()
-     {
-         $this->assertTrue( 
-           Schema::hasColumns('users', [
-             'id','name', 'email', 'email_verified_at', 'password'
-         ]), 1);
-     }
 
     /** @test */
     public function a_user_have_many_posts()
@@ -38,4 +38,6 @@ class UserTest extends TestCase
 
        $this->assertEquals(1, $user->posts->count()); 
     }
+
+    
 }

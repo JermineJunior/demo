@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['user_id','title','body'];
+    protected $guarded = [];
 
     public function path()
     {
         return 'posts/'.$this->id;
     }
-    
+
     public static function latest()
     {
         $latest = Post::find(Post::max('id'));
