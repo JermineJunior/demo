@@ -60,7 +60,7 @@
                 </a>
             </div>
             <div class="mt-6">
-                <a class="px-2 py-1  text-lg text-gray-800 border-b tracking-wide border-blue-400" href="{{ route('posts.show',$latest->id) }}">
+                <a class="px-2 py-1  text-lg text-gray-800 tracking-wide" href="{{ route('posts.show',$latest->id) }}">
                     {{ $latest->title }}
                 </a>
             </div>

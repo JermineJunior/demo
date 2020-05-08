@@ -16,7 +16,7 @@ class PostsController extends Controller
  
     public function index()
     {
-        $posts = Post::latest()->paginate(4);
+        $posts = Post::orderBy('created_at','desc')->paginate(4);
   
         $users = User::all();
 

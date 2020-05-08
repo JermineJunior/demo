@@ -2,9 +2,9 @@
     <div class="ui pagination menu" role="navigation">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <a class="icon page-item  hover:bg-gray-700 hover:text-gray-200 disabled" aria-disabled="true" aria-label="@lang('pagination.previous')"> <i class="left chevron icon"></i> </a>
+            <a class="icon page-item text-gray-800  hover:bg-gray-700 hover:text-gray-200 hidden " aria-disabled="true" aria-label="@lang('pagination.previous')"> <i class="left chevron icon"></i>Prev</a>
         @else
-            <a class="icon page-item  hover:bg-gray-700 hover:text-gray-200" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')"> <i class="left chevron icon"></i> </a>
+            <a class="icon page-item  hover:bg-gray-700 hover:text-gray-200" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')"> <i class="left chevron icon"></i></a>
         @endif
 
         {{-- Pagination Elements --}}
@@ -28,9 +28,9 @@
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <a class="icon page-item  hover:bg-gray-700 hover:text-gray-200" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')"> <i class="right chevron icon"></i> </a>
+            <a class="icon page-item text-gray-800   hover:bg-gray-700 hover:text-gray-200" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')"> <i class="right chevron icon"></i>Next</a>
         @else
-            <a class="icon page-item  hover:bg-gray-700 hover:text-gray-200 disabled" aria-disabled="true" aria-label="@lang('pagination.next')"> <i class="right chevron icon"></i> </a>
+            <a class="icon page-item  hover:bg-gray-700 hover:text-gray-200 " aria-disabled="true" aria-label="@lang('pagination.next')"> <i class="right chevron icon"></i></a>
         @endif
     </div>
 @endif
