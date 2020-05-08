@@ -29,7 +29,7 @@ class PostTest extends TestCase
     }
     
     /** @test */
-    public function authinticated_users_can_view_project()
+    public function authinticated_users_can_view_posts()
     {
         $this->signIn();
         
