@@ -42,4 +42,31 @@ class CreatePostsTest extends TestCase
                     ->assertSee($this->post->body);
 
     }
+
+    /** @test */
+    public function it_requires_a_title()
+    {
+       $this->signIn();
+
+       $post = factory('App\Post')->make(['title' => null]);
+
+       $this->post('/posts',$post->toArray())
+               ->assertSessionHasErrors('title');
+
+       $post = factory('App\Post')->make(['title' => 1]);
+
+       $this->post('/posts',$post->toArray())
+               ->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    public function it_requires_a_body()
+    {
+       $this->signIn();
+
+       $post = factory('App\Post')->make(['body' => null]);
+
+       $this->post('/posts',$post->toArray())
+               ->assertSessionHasErrors('body');
+    }
 }

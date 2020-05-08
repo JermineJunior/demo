@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBlogPost extends FormRequest
@@ -24,8 +24,18 @@ class StoreBlogPost extends FormRequest
     public function rules()
     {
         return [
-            'title'  =>  ['required','max:100'],
+            'title'  =>  ['required','string','max:100'],
             'body'   =>  ['required','max:300']
         ];
+    }
+
+    public function persist($post)
+    {
+       return $post->addPost([ 
+            'user_id' => request('user_id'), 
+            'title'   => request('title') ,
+            'body'    => request('body')
+        ]);
+
     }
 }

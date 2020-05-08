@@ -8,7 +8,7 @@ use App\Http\Requests\StoreBlogPost;
 
 class PostsController extends Controller
 {
-
+    
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,24 +26,15 @@ class PostsController extends Controller
        
     }
 
-  
     public function create()
     {
         return view('posts.create');
     }
 
  
-    public function store(StoreBlogPost $request)
+    public function store(StoreBlogPost $form , Post $post)
     {
-        $validated = $request->validated();
-
-        $post =  Post::create([ 
-            'user_id' => request('user_id'), 
-            'title' => request('title') ,
-            'body'  =>  request('body')
-        ]);
-
-        return redirect($post->path());
+       return $form->persist($post);
     }
 
   

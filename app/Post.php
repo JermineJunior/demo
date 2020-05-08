@@ -14,7 +14,11 @@ class Post extends Model
     {
         return 'posts/'.$this->id;
     }
-
+    
+    public function addPost($post)
+    {
+       $this->create($post); 
+    }
     public static function latest()
     {
         $latest = Post::find(Post::max('id'));
