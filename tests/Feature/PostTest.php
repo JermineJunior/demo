@@ -46,6 +46,19 @@ class PostTest extends TestCase
         $this->get($this->post->path())
          ->assertSee($this->post->title)
           ->assertSee($this->post->body);
+    }
+
+    /** @test */
+    public function an_authinticated_user_can_view_post_comments()
+    {
+        $this->signIn();
+
+        $user = create('App\User');
+        
+        factory('App\Comment')->create(['user_id' => $user->id ,'post_id' => $this->post->id]);
+
+        $this->get($this->post->path())
+              ->assertSeeText('Comments');
 
     }
     

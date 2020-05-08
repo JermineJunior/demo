@@ -19,10 +19,20 @@
                 </p>
             </div>
             <div class="flex justify-between items-center mt-4">
-                <a class="text-blue-600 hover:underline" href="{{ $post->path() }}">Read more</a>
+                <div class="flex items-center">
+                    <a class="text-blue-600 flex items-center mr-auto" href="#">
+                        <svg class="w-6 h-6 mr-1 fill-current text-blue-600" viewBox="0 0 20 20"  xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 5V13C18 14.1046 17.1046 15 16 15H11L6 19V15H4C2.89543 15 2 14.1046 2 13V5C2 3.89543 2.89543 3 4 3H16C17.1046 3 18 3.89543 18 5ZM7 8H5V10H7V8ZM9 8H11V10H9V8ZM15 8H13V10H15V8Z"/>
+                        </svg>
+                        <span class="ml-auto">
+                            {{ $post->comments->count() }}
+                        </span>
+                    </a>
+                    <a class="text-blue-600 hover:text-blue-400 ml-4" href="{{ $post->path() }}">Read more</a>
+                </div>
                 <div>
-                    <a class="flex items-center" href="{{ route('profile', $post->users->name) }}">
-                        <h1 class="text-gray-700 font-bold">{{ $post->users->name }}</h1>
+                    <a class="flex items-center" href="{{ route('profile', $post->owner->name) }}">
+                        <h1 class="text-gray-700 font-bold">{{ $post->owner->name }}</h1>
                     </a>
                 </div>
             </div>
@@ -71,7 +81,7 @@
             </div>
             <div class="flex justify-between items-center mt-4">
                 <div class="flex items-center">
-                    <a class="text-gray-700 text-sm mx-3" href="{{ route('profile',$latest->users->name) }}">{{ $latest->users->name }}</a>
+                    <a class="text-gray-700 text-sm mx-3" href="{{ route('profile',$latest->owner->name) }}">{{ $latest->owner->name }}</a>
                 </div>
                 <span class="font-light text-sm text-gray-600">{{ $latest->created_at->diffForHumans() }}</span>
             </div>

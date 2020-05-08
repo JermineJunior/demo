@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\User;
+use App\{Comment,User};
     
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,10 +26,14 @@ class Post extends Model
         return $latest;
     }
 
-    public function users()
+    public function owner()
     {
         return $this->belongsTo(User::class,'user_id');
     }
     
+    public function comments()
+    {
+      return $this->hasMany(Comment::class);
+    }
    
 }

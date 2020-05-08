@@ -25,20 +25,35 @@
         </div>
         <div class="flex justify-between items-center mt-4">
             <a class="text-blue-600 flex items-center" href="#">
-                <svg viewBox="0 0 24 24" class="w-6 h-6 mr-1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="rgba(99, 179, 237)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="w-6 h-6 mr-1 fill-current text-blue-600" viewBox="0 0 20 20"  xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18 5V13C18 14.1046 17.1046 15 16 15H11L6 19V15H4C2.89543 15 2 14.1046 2 13V5C2 3.89543 2.89543 3 4 3H16C17.1046 3 18 3.89543 18 5ZM7 8H5V10H7V8ZM9 8H11V10H9V8ZM15 8H13V10H15V8Z"/>
                 </svg>
-                <span class="ml-auto">Like</span>
+                <span class="ml-auto">
+                    {{ $post->comments->count() }}
+                </span>
             </a>
             <div>
-                <a class="flex items-center" href="{{ route('profile' , $post->users->name) }}">
+                <a class="flex items-center" href="{{ route('profile' , $post->owner->name) }}">
                     <img class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
                     <h1 class="text-gray-700 font-bold">
-                        {{ $post->users->name }}
+                        {{ $post->owner->name }}
                     </h1>
                 </a>
             </div>
         </div>
+    </div>
+    <div class="w-custom px-6 my-4 py-6 bg-white rounded-lg shadow mx-8 h-56 md:h-72">
+        Comments:
+        @foreach ($post->comments as $comment)
+        <div class="mt-2 text-gray-700 flex items-center justify-between">
+            <p class="text-sm">
+                {{ $comment->body }}
+            </p>
+            <a href="#" class="text-blue-600 pt-1o">
+              By  {{ $comment->owner->name }}
+            </a>
+        </div>
+        @endforeach
     </div>
 </div>
 @endsection
