@@ -35,5 +35,10 @@ class Post extends Model
     {
       return $this->hasMany(Comment::class);
     }
+
+    public function addComment($attribuites)
+    {
+        $this->comments()->create($attribuites);
+    }
    
 }

@@ -44,12 +44,14 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Responsep
      *
      * @throws \Throwable
      */
     public function render($request, Throwable $exception)
     {
+       /*  throw_if(app()->environment() == "testing",$exception); */
+
         return parent::render($request, $exception);
     }
 }

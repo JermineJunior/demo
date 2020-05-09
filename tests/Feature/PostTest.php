@@ -23,6 +23,8 @@ class PostTest extends TestCase
     /** @test */
     public function guests_can_not_view_post()
     {
+        $this->withExceptionHandling();
+
         $this->get('/posts')
         ->assertStatus(302)
         ->assertRedirect('/login');
@@ -49,17 +51,17 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function an_authinticated_user_can_view_post_comments()
+    public function an_authinticated_user_can_read_post_comments()
     {
         $this->signIn();
 
         $user = create('App\User');
         
-        factory('App\Comment')->create(['user_id' => $user->id ,'post_id' => $this->post->id]);
+        $comment =  factory('App\Comment')
+               ->create(['user_id' => $user->id ,'post_id' => $this->post->id]);
 
         $this->get($this->post->path())
-              ->assertSeeText('Comments');
-
+                 ->assertSee($comment->body);
     }
     
 }

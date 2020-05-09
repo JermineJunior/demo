@@ -18,6 +18,7 @@ class PostTest extends TestCase
 
        $this->user = create('App\User');
     }
+
    /** @test */
    public function posts_db_has_the_expected_coulmns()
    {
@@ -37,6 +38,7 @@ class PostTest extends TestCase
    /** @test */
    public function it_can_fetch_latest()
    {
+      $this->signIn();
       $post = factory(Post::class,3)->create(['user_id' =>  $this->user->id]);
 
       $latest = Post::latest();
@@ -46,7 +48,7 @@ class PostTest extends TestCase
    }
 
    /** @test */
-   public function it_belongs_to_a_user()
+   public function it_has_an_owner()
    {
       $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
       
@@ -58,9 +60,12 @@ class PostTest extends TestCase
    {
       $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
 
-      $comments = factory('App\Comment',2)->create(['user_id' =>  $this->user->id,'post_id' => $post->id]);
+      $post->addComment([
+         'body'  =>  'some body',
+         'user_id' => 1
+      ]);
 
-      $this->assertEquals(2,$post->comments->count());
+      $this->assertEquals(1,$post->comments->count());
    }
 
 }
