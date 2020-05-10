@@ -1,37 +1,52 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto px-4 py-2">
-    <header class="flex items-center justify-between border-b border-blue-300">
-        <h2 class="text-gray-800 text-2xl py-3">
-            {{ $profileUser->name }}
-            <small> signed in {{ $profileUser->created_at->diffForHumans() }}</small>
-        </h2>
-        <div>
-            <img class="mx-4 w-12 h-12 border border-blue-400 shadow object-cover rounded-full hidden sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
+<div class="bg-white sm:max-w-full max-w-md rounded overflow-hidden shadow-lg mx-3 my-2">
+    <div class="border-b">
+        <!-- First list item -->
+        <div class="px-6 py-3 flex items-center justify-between"> 
+            <div class="pl-3">
+                <p class="text-sm font-semibold">
+                    {{ $profileUser->name }}
+                </p>
+                <p class="text-xs text-gray-600">
+                    {{ $profileUser->email }}
+                </p>
+            </div>
+            <div class="rounded-full w-10 h-10 bg-blue-600 shadow border border-gray-700">
+
+            </div>
         </div>
-    </header>
-    <div class="content mt-4">
-        <h3 class="text-xl">Articles by {{ $profileUser->name }}:</h3>
-        <ul class="mt-2 text-gray-800">
+    </div>
+    <div class="border-b">
+        <!-- First list item -->
+        <div class="px-6 py-4 text-center w-64 md:w-full md:flex md:items-center md:justify-center">
+            <a href="#" class="border rounded py-2 px-4 text-xs font-semibold text-gray-70 flex items-center">
+                <svg  class="w-6 h-6 pr-1 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.2322 5.23223L18.7677 8.76777M16.7322 3.73223C17.7085 2.75592 19.2914 2.75592 20.2677 3.73223C21.244 4.70854 21.244 6.29146 20.2677 7.26777L6.5 21.0355H3V17.4644L16.7322 3.73223Z" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Edit Your account.
+            </a>
+        </div>
+    </div>
+    <div class="content my-4 mx-4">
+        <h3 class="text-xl">Posts by {{ $profileUser->name }}:</h3>
+        <div class="mt-2 text-gray-800 flex flex-wrap">
             @forelse ($profileUser->posts as $post)
-                <li class="px-2 py-1 flex">
-                    <svg width="26" height="26" viewBox="0 0 24 24" class="mx-1 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <a href="{{ route('posts.show',$post->id) }}" class="capitalize text-lg font-semibold">
-                        {{ $post->title }}
-                    </a>
-                </li>
-                @empty
-                <div class=" bg-blue-300 rounded-md shadow-md " style="width:36rem;">
-                    <div class="text-gray-800 flex mt-4 px-3 py-2">
-                        <span class="text-2xl mt-4 tracking-wide">{{ $profileUser->name }} has no posts.</span>
-                        <img src="{{ asset('images/art.svg') }}" alt="no_articles" class="w-64">
-                    </div>
+            <div class="px-2 w-1/3 py-1 flex">
+                <a href="{{ route('posts.show',$post->id) }}" class="capitalize text-lg font-semibold">
+                    {{ $post->title }}
+                </a>
+            </div>
+            @empty
+            <div class=" bg-blue-300 rounded-md shadow-md" style="width:36rem;">
+                <div class="text-gray-800 flex mt-4 px-3 py-2">
+                    <span class="text-2xl mt-4 tracking-wide">{{ $profileUser->name }} has no posts.</span>
+                    <img src="{{ asset('images/art.svg') }}" alt="no_articles" class="w-64">
                 </div>
+            </div>
             @endforelse
-        </ul>
+        </div>
     </div>
 </div>
 @endsection
