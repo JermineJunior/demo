@@ -25,6 +25,6 @@ class CommentsTest extends TestCase
     $comment = factory(Comment::class)->create(['user_id' =>  $this->user->id,'post_id' => $this->post->id]);
 
     $this->assertInstanceOf(User::class,$comment->owner);
-
   }
+  
 }

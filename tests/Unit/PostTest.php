@@ -56,7 +56,7 @@ class PostTest extends TestCase
    }
 
    /** @test */
-   public function it_has_associated_comments()
+   public function it_can_create_comments()
    {
       $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
 

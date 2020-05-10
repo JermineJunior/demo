@@ -15,10 +15,11 @@ class CommentController extends Controller
     }
     public function store(Post $post,Comment $comment)
     {
+        
        $post->addComment([
-        'body'      =>  request('body'),
-        'user_id'   => auth()->id(),
-        'post_id'   =>  $post->id
+            'body'      =>  request('body'),
+            'user_id'   => auth()->id(),
+            'post_id'   =>  $post->id
        ]);
 
        return back();
