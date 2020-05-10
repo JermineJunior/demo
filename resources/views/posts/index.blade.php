@@ -70,18 +70,18 @@
                 </a>
             </div>
             <div class="mt-6">
-                <a class="px-2 py-1  text-lg text-gray-800 tracking-wide" href="{{ route('posts.show',$latest->id) }}">
+                <a class="py-1 font-semibold text-lg text-gray-800 tracking-wide uppercase" href="{{ route('posts.show',$latest->id) }}">
                     {{ $latest->title }}
                 </a>
             </div>
             <div class="mt-4">
-                <a class="text-lg text-gray-700 font-medium" href="#"">
+                <a class="text-sm text-gray-700 font-medium" href="#"">
                     {{ $latest->body }}
                 </a>
             </div>
             <div class="flex justify-between items-center mt-4">
                 <div class="flex items-center">
-                    <a class="text-gray-700 text-sm mx-3" href="{{ route('profile',$latest->owner->name) }}">{{ $latest->owner->name }}</a>
+                    <a class="text-gray-700 font-medium text-sm py-1" href="{{ route('profile',$latest->owner->name) }}">By {{ $latest->owner->name }}</a>
                 </div>
                 <span class="font-light text-sm text-gray-600">{{ $latest->created_at->diffForHumans() }}</span>
             </div>

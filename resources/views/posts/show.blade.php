@@ -47,7 +47,7 @@
         <div class="px-6 my-4 py-6 bg-white rounded-lg shadow mx-8">
             <div class="mt-2 text-gray-700 flex items-center justify-between">
                 <p class="text-sm">
-                    {{ $comment->body }}
+                    {{ $comment->body }} <small class="text-gray-700">posted {{ $comment->created_at->diffForHumans() }}</small>
                 </p>
                 <a href="#" class="text-blue-600 pt-1o">
                     By  {{ $comment->owner->name }}
@@ -60,11 +60,11 @@
             <form class='w-full max-w-xl bg-white rounded-lg px-3 py-2' method="POST" action="{{ route('comment',$post->id) }}">
                 @csrf
                 <div class='flex flex-wrap -mx-3 mb-6'>
-                    <div class='w-full md:w-full px-3 mb-6'>
-                        <textarea class='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' id='grid-text-area-1' name="body" placeholder='Enter Your Comment' required></textarea>
+                    <div class='w-full md:w-full px-3 mb-2'>
+                        <textarea class='bg-gray-200 rounded leading-normal resize-none w-full h-12 py-2 px-3' id='grid-text-area-1' name="body" placeholder='Enter Your Comment' required></textarea>
                     </div>
                     <div class='w-full md:w-1/4 px-3 mb-2'>
-                        <input type='submit' class='appearance-none block w-full bg-blue-400 text-gray-200 font-bold uppercase border border-gray-200 rounded-lg py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-center cursor-pointer' id='submit-2' value='Send'>
+                        <input type='submit' class='border border-blue-500 bg-blue-400 text-white hover:bg-blue-600 py-1 px-4 rounded tracking-wide mr-1' id='submit-2' value='Send'>
                     </div>
                 </div>
             </form>
