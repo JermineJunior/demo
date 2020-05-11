@@ -26,5 +26,15 @@ class CommentsTest extends TestCase
 
     $this->assertInstanceOf(User::class,$comment->owner);
   }
+
+  /** @test */
+  public function it_gets_deleted_with_the_associated_post()
+  {
+    $comment = factory(Comment::class)->create(['user_id' =>  $this->user->id,'post_id' => $this->post->id]);
+    
+    $this->post->delete();
+
+    $this->assertDatabaseMissing('comments',$comment->toArray());
+  }
   
 }

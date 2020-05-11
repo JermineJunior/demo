@@ -26,9 +26,7 @@ class CreatePostsTest extends TestCase
     {  
         $this->post('/posts',$this->post->toArray())
         ->assertStatus(302)
-        ->assertRedirect('/login');
-        
-        
+        ->assertRedirect('/login');   
     }
 
     /** @test */
@@ -65,9 +63,21 @@ class CreatePostsTest extends TestCase
         
         $this->post('/posts',$this->post->toArray());
         
-        $this->get($this->post->path())
-        ->assertSee($this->post->title)
-        ->assertSee($this->post->body);
+        $this->get('/posts/')
+          ->assertSee($this->post->title)
+          ->assertSee($this->post->body);
         
+    }
+
+    /** @test */
+    public function it_can_be_deleted()
+    {
+        $this->signIn();
+
+        $this->post('/posts',$this->post->toArray());
+
+        $this->delete('/posts',$this->post->toArray());
+
+        $this->assertDatabaseMissing('posts',$this->post->toArray());
     }
 }

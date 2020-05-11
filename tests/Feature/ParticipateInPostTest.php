@@ -26,8 +26,7 @@ class ParticipateInPostTest extends TestCase
              ->make(['user_id' => $this->user->id ,'post_id' => $this->post->id]);
 
        $this->post($this->post->path().'/comment',$comment->toArray())
-                              ->assertStatus(302);
-                               
+                              ->assertStatus(302);                          
     }
 
     /** @test */
@@ -40,5 +39,20 @@ class ParticipateInPostTest extends TestCase
 
       $this->get($this->post->path())
             ->assertSee($comment->body);
+    }
+
+    /** @test */
+    public function comments_of_a_deleted_post_are_deleted()
+    {
+      $this->signIn();
+      
+      $comment =  factory('App\Comment')
+              ->make(['user_id' => $this->user->id ,'post_id' => $this->post->id]);
+
+      $this->post($this->post->path().'/comment',$comment->toArray());
+
+      $this->delete('/posts',$this->post->toArray());
+
+      $this->assertDatabaseMissing('comments',$comment->toArray());
     }
 }

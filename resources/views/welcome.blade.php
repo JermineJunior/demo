@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="hidden lg:block lg:w-1/2" style="clip-path:polygon(10% 0, 100% 0%, 100% 100%, 0 100%)">
-            <div class="h-full object-cover bg-cover" style="background-image: url('images/cover.svg')">
+            <div class="h-full object-cover bg-cover" style="background-image: url('images/cover2.png')">
                 <div class="h-full bg-gray-400 opacity-25"></div>
             </div>
         </div>

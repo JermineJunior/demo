@@ -32,7 +32,7 @@ class PostTest extends TestCase
    public function it_has_a_path()
    {
       $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
-      $this->assertEquals('posts/' . $post->id,$post->path());
+      $this->assertEquals('/posts/' . $post->slug,$post->path());
    }
 
    /** @test */
@@ -53,6 +53,16 @@ class PostTest extends TestCase
       $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
       
       $this->assertInstanceOf(User::class,$post->owner);
+   }
+
+   /** @test */
+   public function it_can_be_deleted()
+   {
+      $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+     
+      $post->delete();
+
+      $this->assertDatabaseMissing('posts',$post->toArray());
    }
 
    /** @test */
