@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\{User,Post};
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
 
 class PostsController extends Controller
@@ -31,27 +30,14 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
- 
     public function store(StoreBlogPost $form , Post $post)
     {
        return $form->persist($post);
     }
 
-  
     public function show(Post $post)
     {
         return view('posts.show',compact('post'));
-    }
-
-   
-    public function edit(Post $post)
-    {
-        //
-    }
-
-    public function update(Request $request, Post $post)
-    {
-        //
     }
 
     public function destroy(Post $post)

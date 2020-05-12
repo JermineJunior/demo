@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\{Post , User};
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -13,5 +13,4 @@ class Comment extends Model
     {
        return $this->belongsTo(User::class,'user_id');
     }
-
 }

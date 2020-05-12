@@ -4,7 +4,6 @@ namespace App;
 
 use App\Post;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -25,7 +24,7 @@ class User extends Authenticatable
      
     public function getRouteKeyName()
     {
-          return 'name';
+        return 'name';
     }
 
     public function posts()
@@ -38,6 +37,4 @@ class User extends Authenticatable
       return $this->hasMany(Comment::class);
     }
    
-
-    
 }
