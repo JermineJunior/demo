@@ -42,29 +42,26 @@
             </div>
         </div>
     </div>
-    <div class="">
+    <div class="bg-white shadow-sm mx-8 rounded-md mb-2">
+       <h4 class="px-10 py-2 text-gray-800">Comments:</h4> 
         @foreach ($post->comments as $comment)
-        <div class="px-6 my-4 py-6 bg-white rounded-lg shadow mx-8">
-            <div class="mt-2 text-gray-700 flex items-center justify-between">
-                <p class="text-sm">
-                    {{ $comment->body }} <small class="text-gray-700">posted {{ $comment->created_at->diffForHumans() }}</small>
-                </p>
-                <a href="#" class="text-blue-600 pt-1o">
-                    By  {{ $comment->owner->name }}
-                </a>
-            </div>
-        </div>
+        <div class="px-20 mt-2 py-2 mx-8 border-b -mx-6">
+             <div class="text-gray-700 flex items-center justify-between">
+                 <p class="text-sm">{{ $comment->body }}</p>
+                 <small>by {{ $comment->owner->name }}</small>
+             </div>
+        </div>     
         @endforeach
         
-        <div class='flex my-2 border mx-8 max-w-lg'>
-            <form class='w-full max-w-xl bg-white rounded-lg px-3 py-2' method="POST" action="{{ route('comment',$post->id) }}">
+        <div class='flex mt-4 mx-8 max-w-lg border'>
+            <form class='w-full max-w-xl bg-white rounded-lg px-3 py-2 mb-2' method="POST" action="{{ route('comment',$post->id) }}">
                 @csrf
                 <div class='flex flex-wrap -mx-3 mb-6'>
                     <div class='w-full md:w-full px-3 mb-2'>
-                        <textarea class='bg-gray-200 rounded leading-normal resize-none w-full h-12 py-2 px-3' id='grid-text-area-1' name="body" placeholder='Enter Your Comment' required></textarea>
+                        <textarea class='bg-gray-200 rounded leading-normal resize-y w-full h-20 py-2 px-3 focus:bg-white' id='grid-text-area-1' name="body" placeholder='Enter Your Comment' required></textarea>
                     </div>
-                    <div class='w-full md:w-1/4 px-3 mb-2'>
-                        <input type='submit' class='border border-blue-500 bg-blue-400 text-white hover:bg-blue-600 py-1 px-4 rounded tracking-wide mr-1' id='submit-2' value='Send'>
+                    <div class='w-full flex justify-end md:w-full px-3 my-1'>
+                        <input type='submit' class='border border-blue-500 bg-blue-400 text-white hover:bg-blue-600 py-1 px-4 rounded tracking-wide mr-1 ' id='submit-2' value='Send'>
                     </div>
                 </div>
             </form>
