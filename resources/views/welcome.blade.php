@@ -5,9 +5,9 @@
     <nav class="bg-white -mt-4 py-6">
         <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
             <div class="flex justify-between items-center">
-               <div class="text-2xl font-bold text-gray-800 md:text-3xl">
-                
-               </div>
+                <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+                    
+                </div>
                 
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <p class="mt-2 text-sm text-gray-500 md:text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi cum cupiditate ducimus, fugit harum id necessitatibus odio quam quasi, quibusdam rem tempora voluptates. Cumque debitis dignissimos id quam vel!</p>
                 <div class="flex justify-center lg:justify-start mt-6">
                     <a class="px-4 py-3 bg-blue-700 text-gray-200 text-sm  font-medium rounded hover:bg-blue-500" href="#">Get Started</a>
-                    <a class="mx-4 px-4 py-3 bg-gray-300 text-gray-900 text-sm  font-medium rounded hover:bg-gray-400" href="#">Sign Up</a>
+                    <a class="mx-4 px-4 py-3 bg-gray-300 text-gray-900 text-sm  font-medium rounded hover:bg-gray-400" href="{{ route('register') }}">Sign Up</a>
                 </div>
             </div>
         </div>
