@@ -36,7 +36,7 @@
         <div class="mt-2 text-gray-800 flex flex-wrap">
             @forelse ($profileUser->posts as $post)
             <div class="px-2 w-1/3 py-1 flex">
-                <a href="{{ route('posts.show',$post->id) }}" class="capitalize text-lg font-semibold">
+                <a href="{{ route('posts.show',$post->slug) }}" class="capitalize text-lg font-semibold">
                     {{ $post->title }}
                 </a>
             </div>

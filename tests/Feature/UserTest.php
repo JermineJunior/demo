@@ -38,6 +38,21 @@ class UserTest extends TestCase
 
        $this->assertEquals(1, $user->posts->count()); 
     }
-    
+
+     /** @test */
+     public function only_profile_owner_can_update_profile()
+     {
+        $user = create(User::class);
+         
+        $this->get("/profiles/{$user->name}")
+           ->assertDontSee(' Edit Your account.');
+       
+        $this->actingAs($user);
+            
+        $this->get("/profiles/{$user->name}")
+           ->assertSee(' Edit Your account.');
+           
+     }
+ 
     
 }

@@ -15,7 +15,7 @@
                 <textarea class='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' id='grid-text-area-3' cols="15" name="body" placeholder='Enter Post body' required></textarea>
             </div>
             <div class='w-full md:w-1/3 px-3 mb-6'>
-                <input type='submit' class='appearance-none block w-full bg-gray-400 text-gray-700 font-bold uppercase border border-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 text-center cursor-pointer' id='submit-5' value='Publish'>
+                <input type='submit' class='appearance-none block w-full bg-blue-500 text-gray-100 font-bold uppercase border border-gray-200 rounded-lg py-3 px-4 leading-tight hover:bg-blue-400 hover:text-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 text-center cursor-pointer' id='submit-5' value='Publish'>
             </div>
             
         </div>
