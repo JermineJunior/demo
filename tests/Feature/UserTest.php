@@ -38,6 +38,6 @@ class UserTest extends TestCase
 
        $this->assertEquals(1, $user->posts->count()); 
     }
-
+    
     
 }

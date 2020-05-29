@@ -14,12 +14,13 @@
                 </p>
             </div>
             <div class="rounded-full w-10 h-10 bg-blue-600 shadow border border-gray-700">
-
+                
             </div>
         </div>
     </div>
     <div class="border-b">
         <!-- First list item -->
+        @if ($profileUser->can('update',$profileUser))
         <div class="px-6 py-4 text-center w-64 md:w-full md:flex md:items-center md:justify-center">
             <a href="#" class="border rounded py-2 px-4 text-xs font-semibold text-gray-70 flex items-center">
                 <svg  class="w-6 h-6 pr-1 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +29,7 @@
                 Edit Your account.
             </a>
         </div>
+        @endif
     </div>
     <div class="content my-4 mx-4">
         <h3 class="text-xl">Posts by {{ $profileUser->name }}:</h3>
