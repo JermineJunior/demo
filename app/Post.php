@@ -15,11 +15,12 @@ class Post extends Model
 		parent::boot();
 
 		static::deleting(function ($post) {
-			$post->comments->each->delete();
+            $post->comments->each->delete();
         });
 
         static::creating(function ($post){
             $post->update(['slug',Str::slug($post->title)]);
+            User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
         });
     }
     
