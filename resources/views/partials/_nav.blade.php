@@ -1,4 +1,4 @@
-<body class="bg-gray-200">
+<body class="bg-gray-100">
     <nav id="header" class="w-full z-30 top-0 py-1 bg-white shadow-lg border-b border-blue-400">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-2">
             

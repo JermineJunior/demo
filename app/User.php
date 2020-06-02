@@ -36,5 +36,11 @@ class User extends Authenticatable
     {
       return $this->hasMany(Comment::class);
     }
+
+
+    public function updatePostsCount($post)
+    {
+        User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
+    }
    
 }

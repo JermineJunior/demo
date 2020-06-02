@@ -67,4 +67,12 @@ class PostTest extends TestCase
       $this->assertEquals(1,$post->comments->count());
    }
 
+   /** @test */
+   public function it_can_update_owners_posting_counter()
+   {
+      $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+      
+      $this->assertEquals(1,$post->owner->posts_count);
+   }
+
 }

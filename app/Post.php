@@ -15,12 +15,12 @@ class Post extends Model
 		parent::boot();
 
 		static::deleting(function ($post) {
-            $post->comments->each->delete();
+            $post->comments->each->delete();//remove post replies
         });
 
         static::creating(function ($post){
-            $post->update(['slug',Str::slug($post->title)]);
-            $post->updatePostsCount($post);
+            $post->update(['slug',Str::slug($post->title)]);//add a slug to the path
+            $post->owner->updatePostsCount($post);//update posts owner posts_count
         });
     }
     
@@ -59,10 +59,4 @@ class Post extends Model
     {
         $this->comments()->create($attribuites);
     }
-
-    public function updatePostsCount($post)
-    {
-        User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
-    }
-   
 }
