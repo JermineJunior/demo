@@ -42,7 +42,7 @@ class ParticipateInPostTest extends TestCase
     }
 
     /** @test */
-    public function comments_of_a_deleted_post_are_deleted()
+    public function when_a_post_get_deleted_its_comments_are_deleted()
     {
       $this->signIn();
       
