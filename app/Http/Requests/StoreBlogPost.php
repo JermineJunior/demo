@@ -13,7 +13,9 @@ class StoreBlogPost extends FormRequest
      */
     public function authorize()
     {
-        return true;  //for now
+       $post = Post::find($this->route()->parameter('post'));
+
+       return $post && $this->user()->can('update',$post);
     }
 
     /**
