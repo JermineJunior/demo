@@ -17,10 +17,10 @@ class PostsController extends Controller
     {
         $posts = Post::orderBy('created_at','desc')->paginate(4);
   
-        $users = User::all();
+        $users = User::where('posts_count','>','0')->get();
 
         $latest = Post::latest();
-
+      
        return view('posts.index',compact('posts','latest','users')); 
        
     }

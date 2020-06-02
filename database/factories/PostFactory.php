@@ -9,7 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Post::class, function (Faker $faker) {
     $title =   $faker->word();
     return [
-
         'title'  =>  $title,
         'body'   =>  $faker->sentence(),
         'slug'   =>  Str::slug($title),   
