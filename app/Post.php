@@ -20,7 +20,7 @@ class Post extends Model
 
         static::creating(function ($post){
             $post->update(['slug',Str::slug($post->title)]);
-            User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
+            $post->updatePostsCount($post);
         });
     }
     
@@ -58,6 +58,11 @@ class Post extends Model
     public function addComment($attribuites)
     {
         $this->comments()->create($attribuites);
+    }
+
+    public function updatePostsCount($post)
+    {
+        User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
     }
    
 }
