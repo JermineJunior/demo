@@ -1,4 +1,4 @@
-<body class="bg-gray-100">
+<body class="bg-gray-200">
     <nav id="header" class="w-full z-30 top-0 py-1 bg-white shadow-lg border-b border-blue-400">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-2">
             
@@ -17,7 +17,7 @@
                             <img src="{{ asset('images/logo.png') }}" alt="brand" class="w-10">
                         </li>
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/">Home</a></li>
-                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/posts">Posts</a></li>
+                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="{{ route('posts.index') }}">Posts</a></li>
                         <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">About</a></li>
                         <li> <input type="search" name="" class="appearance-none  md:hidden rounded-lg mx-3 block w-1/2 bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ..."></li>
                     </ul>

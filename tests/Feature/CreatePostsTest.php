@@ -29,7 +29,7 @@ class CreatePostsTest extends TestCase
         ->assertRedirect('/login');   
     }
     
-    /** @test */
+    /** @test */ 
     public function it_requires_a_title()
     {
         $this->signIn();
@@ -45,7 +45,7 @@ class CreatePostsTest extends TestCase
         ->assertSessionHasErrors('title');
     }
     
-    /** @test */
+    /** @test */ 
     public function it_requires_a_body()
     {
         $this->signIn();
