@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="bg-white shadow-sm mx-8 rounded-md mb-2 overflow-hidden">
-        <h4 class="px-10 py-2 text-gray-800">Comments:</h4> 
+        <h4 class="px-10 py-2 text-gray-800">Add a new comment</h4> 
         @foreach ($post->comments as $comment)
         <div class="px-20 mt-2 py-2 mx-8 border-b -mx-6">
             <div class="text-gray-700 flex items-center justify-between">
@@ -61,10 +61,16 @@
                 @csrf
                 <div class='flex flex-wrap -mx-3 mb-6'>
                     <div class='w-full md:w-full px-3 mb-2'>
-                        <textarea class='bg-gray-200 rounded-md leading-normal resize-y w-full h-20 py-2 px-3 focus:bg-white' id='grid-text-area-1' name="body" placeholder='Enter Your Comment' required></textarea>
+                        <textarea class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' name="body" placeholder='Type Your Comment' required></textarea>
                     </div>
-                    <div class='w-full flex justify-end md:w-full px-3 my-1'>
-                        <input type='submit' class='border border-blue-500 bg-blue-400 text-white hover:bg-blue-600 py-1 px-4 rounded tracking-wide mr-1 ' id='submit-2' value='Send'>
+                    <div class='w-full flex items-center justify-between md:w-full px-3 my-1'>
+                        <div class="flex items-center w-1/2 text-gray-700 px-2">
+                            <svg fill="none" class="w-6 h-6 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                           <p class="text-sm">Some HTML is okay.</p>
+                        </div>
+                        <input type='submit' class='bg-white  text-gray-600 py-1 px-4 rounded border border-gray-400  tracking-wide mr-1 hover:bg-gray-100 ' id='submit-2' value='Post Comment'>
                     </div>
                 </div>
             </form>
