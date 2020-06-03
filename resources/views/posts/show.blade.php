@@ -10,10 +10,14 @@
             Create Post
         </a>
     </div>
-    <div class="md:w-72 xl:w-custom px-6 my-4 py-6 bg-white rounded-lg shadow-md mx-8 h-56 md:h-72">
+    <div class="md:w-72 xl:w-custom px-6 my-4 pt-6 pb-4 bg-white rounded-lg shadow border mx-8 h-56 md:h-72">
         <div class="flex justify-between items-center">
-            <span class="font-light text-gray-600">Published {{ $post->created_at->diffForHumans() }}</span>
-            <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">PHP</a>
+            <span class="font-light text-gray-600 w-full">
+                Published {{ $post->created_at->diffForHumans() }} by 
+                <a class="items-center inline-flex" href="{{ route('profile' , $post->owner->name) }}">
+                    {{ $post->owner->name }}
+                </a>
+            </span>
         </div>
         <div class="mt-2">
             <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="{{ $post->path() }}">
@@ -32,24 +36,23 @@
                     {{ $post->comments->count() }}
                 </span>
             </a>
-            <div>
-                <a class="flex items-center" href="{{ route('profile' , $post->owner->name) }}">
-                    <img class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80" alt="avatar">
-                    <h1 class="text-gray-700 font-bold">
-                        {{ $post->owner->name }}
-                    </h1>
-                </a>
-            </div>
+            @if (auth()->user()->can('update',$post))
+                <div>
+                    <a href="#" class="flex items-center text-gray-700">
+                        Update 
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
     <div class="bg-white shadow-sm mx-8 rounded-md mb-2 overflow-hidden">
-       <h4 class="px-10 py-2 text-gray-800">Comments:</h4> 
+        <h4 class="px-10 py-2 text-gray-800">Comments:</h4> 
         @foreach ($post->comments as $comment)
         <div class="px-20 mt-2 py-2 mx-8 border-b -mx-6">
-             <div class="text-gray-700 flex items-center justify-between">
-                 <p class="text-sm">{{ $comment->body }}</p>
-                 <small>by {{ $comment->owner->name }}</small>
-             </div>
+            <div class="text-gray-700 flex items-center justify-between">
+                <p class="text-sm">{{ $comment->body }}</p>
+                <small>by {{ $comment->owner->name }}</small>
+            </div>
         </div>     
         @endforeach
         

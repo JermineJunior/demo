@@ -2,7 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
+use App\Post;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
@@ -11,13 +12,14 @@ class PostPolicy
     /**
     * Determine if the given post can be updated by the user.
     *
-    * @param  \App\User  $user
     * @param  \App\Post  $post
     * @return bool
     */
     
-    public function update(User $user, Post $post)
+    public function update($post)
     {
-        return $user->id === $post->user_id;
+        return $post->user_id  ===  auth()->id()
+        ? Response::allow()
+        : Response::deny('You do not own this post.');
     }
 }
