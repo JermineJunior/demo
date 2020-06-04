@@ -60,8 +60,8 @@ class Post extends Model
         $this->comments()->create($attribuites);
     }
 
-    public function isownedBy($user)
+    public function ownedBy($user)
     {
-       return $this->user_id ==  auth()->id();    
+       return $this->user_id ==  $user->id;    
     }
 }
