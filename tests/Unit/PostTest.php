@@ -59,22 +59,19 @@ class PostTest extends TestCase
          {
             $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
             
-            $post->addComment([
-               'body'  =>  'some body',
-               'user_id' => 1
-               ]);
-               
-               $this->assertEquals(1,$post->comments->count());
-            }
+            $post->addComment([ 'body'  =>  'some body','user_id' => 1]);
             
-            /** @test */
-            public function it_can_update_owners_posting_counter()
-            {
-               $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
-               
-               $this->assertEquals(1,$post->owner->posts_count);
-            }
-            
-            
+            $this->assertEquals(1,$post->comments->count());
          }
          
+         /** @test */
+         public function it_can_update_owners_posting_counter()
+         {
+            $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+            
+            $this->assertEquals(1,$post->owner->posts_count);
+         }
+         
+         
+      }
+      
