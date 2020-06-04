@@ -32,12 +32,26 @@ class PostsController extends Controller
 
     public function store(StoreBlogPost $form , Post $post)
     {
-       return $form->persist($post);
+        $form->persist($post);
+
+        return redirect()->route('posts.index');
     }
 
     public function show(Post $post)
     {
         return view('posts.show',compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit',compact('post'));
+    }
+
+    public function update(StoreBlogPost $form,Post $post)
+    {
+      $form->update(['title'=> request('title') ,'body'=> request('body')],$post);
+
+      return redirect()->route('posts.index');
     }
 
     public function destroy(Post $post)

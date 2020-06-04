@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 use App\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -40,5 +41,10 @@ class StoreBlogPost extends FormRequest
             'body'    => request('body')
         ]);
 
+    }
+
+    public function update($data,Post $post)
+    {
+        $post->update($data);
     }
 }

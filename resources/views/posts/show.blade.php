@@ -38,7 +38,7 @@
             </a>
             @if (auth()->id() == $post->user_id)
                 <div>
-                    <a href="#" class="flex items-center text-gray-700">
+                    <a href="{{ route('posts.edit',$post) }}" class="flex items-center text-gray-700">
                         Update 
                     </a>
                 </div>
