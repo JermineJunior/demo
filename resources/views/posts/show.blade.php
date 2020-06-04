@@ -36,7 +36,7 @@
                     {{ $post->comments->count() }}
                 </span>
             </a>
-            @if (auth()->id() == $post->user_id)
+            @if ($post->isOwnedBy(auth()->user()))
                 <div>
                     <a href="{{ route('posts.edit',$post) }}" class="flex items-center text-gray-700">
                         Update 

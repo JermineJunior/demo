@@ -59,4 +59,9 @@ class Post extends Model
     {
         $this->comments()->create($attribuites);
     }
+
+    public function isownedBy($user)
+    {
+       return $this->user_id ==  auth()->id();    
+    }
 }
