@@ -68,9 +68,26 @@ class CreatePostsTest extends TestCase
         ->assertSee($this->post->body);
         
     }
+
+    /** @test */
+    public function a_post_can_be_updated()
+    {
+        $this->signIn();
+       
+        $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+
+        $this->patchJson($post->path(),[
+            'title'  =>  'am a title',
+            'body'   =>  'am a body'
+        ]);
+        
+        $this->assertEquals('am a title',$post->fresh()->title);
+        $this->assertEquals('am a body',$post->fresh()->body);
+
+    }
     
     /** @test */
-    public function it_can_be_deleted()
+    public function a_post_can_be_deleted()
     {
         $this->signIn();
         

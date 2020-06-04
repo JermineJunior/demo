@@ -49,7 +49,7 @@ class PostsController extends Controller
 
     public function update(StoreBlogPost $form,Post $post)
     {
-      $form->update(['title'=> request('title') ,'body'=> request('body')],$post);
+      $form->update(request(['title','body']),$post);
 
       return redirect()->route('posts.index');
     }
