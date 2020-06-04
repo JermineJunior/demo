@@ -36,7 +36,7 @@
                     {{ $post->comments->count() }}
                 </span>
             </a>
-            @if (auth()->user()->can('update',$post))
+            @if (auth()->id() == $post->user_id)
                 <div>
                     <a href="#" class="flex items-center text-gray-700">
                         Update 
@@ -45,8 +45,8 @@
             @endif
         </div>
     </div>
-    <div class="bg-white shadow-sm mx-8 rounded-md mb-2 overflow-hidden">
-        <h4 class="px-10 py-2 text-gray-800">Add a new comment</h4> 
+    <div class="bg-white shadow-sm mx-8 rounded-md mb-1 overflow-hidden">
+        <h2 class="px-6 py-3 text-gray-800">Comments:</h2>
         @foreach ($post->comments as $comment)
         <div class="px-20 mt-2 py-2 mx-8 border-b -mx-6">
             <div class="text-gray-700 flex items-center justify-between">
@@ -58,6 +58,7 @@
         
         <div class='flex mt-6 mx-8 max-w-lg '>
             <form class='w-full max-w-xl bg-white rounded-lg px-3 py-2 mb-2' method="POST" action="{{ route('comment',$post->slug) }}">
+                <h4 class="px-4 -ml-4 pb-3 pt-1 text-gray-800">Add a new comment</h4> 
                 @csrf
                 <div class='flex flex-wrap -mx-3 mb-6'>
                     <div class='w-full md:w-full px-3 mb-2'>
