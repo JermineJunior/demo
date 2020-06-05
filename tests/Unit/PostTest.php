@@ -18,13 +18,13 @@ class PostTest extends TestCase
       $this->user = create('App\User');
    }
    
-   /** @test */
-   public function posts_db_has_the_expected_coulmns()
-   {
-      $this->assertTrue( 
-         Schema::hasColumns('posts', [
-            'id','user_id','title', 'body'
-            ]), 1);
+         /** @test */
+         public function posts_db_has_the_expected_coulmns()
+         {
+            $this->assertTrue( 
+               Schema::hasColumns('posts', [
+                  'id','user_id','title', 'body'
+                  ]), 1);
          }
          
          /** @test */
@@ -52,6 +52,7 @@ class PostTest extends TestCase
             $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
             
             $this->assertInstanceOf(User::class,$post->owner);
+            $this->assertEquals($post->owner->id,$this->user->id);
          }
          
          /** @test */

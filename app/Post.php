@@ -62,6 +62,6 @@ class Post extends Model
 
     public function ownedBy($user)
     {
-       return $this->user_id ==  $user->id;    
+       return $this->owner->id ==  $user->id;    
     }
 }
