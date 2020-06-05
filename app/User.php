@@ -40,9 +40,10 @@ class User extends Authenticatable
 
     public function updatePostsCount($post,$update)
     {
-        if($update == 'inc'){
+        if($update == 'inc')
             User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
-        }
+            
+        else if($update == 'dec')
         User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count -=1]);
     }
    
