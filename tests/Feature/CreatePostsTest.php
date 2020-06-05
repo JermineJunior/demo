@@ -85,6 +85,16 @@ class CreatePostsTest extends TestCase
         $this->assertEquals('am a body',$post->fresh()->body);
 
     }
+
+    /** @test */
+    public function guests_can_not_delete_posts()
+    {
+        $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+        
+        $response  = $this->delete($post->path());
+
+        $response->assertStatus(302);
+    }
     
     /** @test */
     public function a_post_can_be_deleted()
