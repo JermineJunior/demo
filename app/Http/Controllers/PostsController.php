@@ -56,6 +56,10 @@ class PostsController extends Controller
 
     public function destroy(Post $post)
     {
+        if($post->user_id != auth()->id()){
+            if (request()->wantsJson()) return response(["status" =>  "you are not authorized"],403);
+            return redirect('/login',403);
+        }
         $post->delete();
         if (request()->wantsJson()) return response([],204);
 

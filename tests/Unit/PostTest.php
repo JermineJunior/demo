@@ -12,19 +12,19 @@ class PostTest extends TestCase
    
    protected $user;
    
-   protected function setUp(): void
-   {
-      parent::setUp();
-      $this->user = create('App\User');
-   }
+         protected function setUp(): void
+         {
+            parent::setUp();
+            $this->user = create('App\User');
+         }
    
-   /** @test */
-   public function posts_db_has_the_expected_coulmns()
-   {
-      $this->assertTrue( 
-         Schema::hasColumns('posts', [
-            'id','user_id','title', 'body'
-            ]), 1);
+         /** @test */
+         public function posts_db_has_the_expected_coulmns()
+         {
+            $this->assertTrue( 
+               Schema::hasColumns('posts', [
+                  'id','user_id','title', 'body'
+                  ]), 1);
          }
          
          /** @test */

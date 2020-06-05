@@ -87,18 +87,23 @@ class CreatePostsTest extends TestCase
         }
         
         /** @test */
-        public function guests_can_not_delete_posts()
+        public function unauthorized_users_may_not_delete_posts()
         {
             $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
             
             $response  = $this->delete($post->path())
             ->assertStatus(302);
+            
+            $this->actingAs(create('App\User'));
+
+            $response  = $this->json('DELETE',$post->path())
+            ->assertStatus(403);
         }
         
         /** @test */
-        public function a_post_can_be_deleted()
+        public function authorized_users_can_delete_posts()
         {
-            $this->signIn();
+            $this->actingAs($this->user);
             
             $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
             
