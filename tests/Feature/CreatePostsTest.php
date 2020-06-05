@@ -93,7 +93,9 @@ class CreatePostsTest extends TestCase
         
         $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
         
-        $this->json('DELETE',$post->path());
+        $response  = $this->json('DELETE',$post->path());
+
+        $response->assertStatus(204);
         
         $this->assertDatabaseMissing('posts',$this->post->toArray());
     }
