@@ -45,12 +45,12 @@ class UserTest extends TestCase
             $user = create(User::class);
             
             $this->get("/profiles/{$user->name}")
-            ->assertDontSee(' Edit Your account.');
+            ->assertDontSee('Edit Your profile.');
             
             $this->actingAs($user);
             
             $this->get("/profiles/{$user->name}")
-            ->assertSee(' Edit Your account.');
+            ->assertSee(' Edit Your profile.');
             
          }
          
