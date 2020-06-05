@@ -57,7 +57,9 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        if (request()->wantsJson()) return response([],204);
 
-        return response([],204);
+        return redirect()->route('posts.index');
+        
     }
 }

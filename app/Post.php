@@ -16,11 +16,12 @@ class Post extends Model
 
 		static::deleting(function ($post) {
             $post->comments()->delete(); 
+            $post->owner->updatePostsCount($post,'dec');
         });
 
         static::creating(function ($post){
             $post->update(['slug',Str::slug($post->title)]);
-            $post->owner->updatePostsCount($post);
+            $post->owner->updatePostsCount($post,'inc');
         });
     }
     

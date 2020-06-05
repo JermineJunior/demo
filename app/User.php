@@ -38,9 +38,12 @@ class User extends Authenticatable
     }
 
 
-    public function updatePostsCount($post)
+    public function updatePostsCount($post,$update)
     {
-        User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
+        if($update == 'inc'){
+            User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count +=1]);
+        }
+        User::where('id','=',$post->owner_id)->update(['posts_count'=> $post->owner->posts_count -=1]);
     }
    
 }

@@ -18,6 +18,15 @@
                     {{ $post->owner->name }}
                 </a>
             </span>
+            @if ($post->ownedBy(auth()->user()))
+            <div>
+                <form action="{{ $post->path() }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                      <input type='submit' class='appearance-none block w-full bg-white text-blue-600 font-bold uppercase rounded-lg py-3 px-4 hover:underline focus:outline-none focus:bg-white focus:border-gray-500 text-center cursor-pointer' value='Delete'>
+                  </form>
+            </div>
+            @endif
         </div>
         <div class="mt-2">
             <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="{{ $post->path() }}">

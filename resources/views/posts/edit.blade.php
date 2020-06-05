@@ -17,8 +17,6 @@
             </div>
             <div class='w-full md:w-1/3 md:flex items-center px-3 mb-6'>
                 <input type='submit' class='appearance-none block w-full bg-blue-500 text-gray-100 font-bold uppercase border border-gray-200 rounded-lg py-3 px-4 md:mr-3 leading-tight hover:bg-blue-400 hover:text-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 text-center cursor-pointer' value='Update'>
-                <input type='submit' class='appearance-none block w-full bg-white text-gray-800 font-bold uppercase border border-gray-400 rounded-lg py-3 px-4 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none focus:bg-white focus:border-gray-500 text-center cursor-pointer' value='Delete'>
-
             </div>
             
         </div>
