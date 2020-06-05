@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ParticipateInPostTest extends TestCase
@@ -45,14 +46,15 @@ class ParticipateInPostTest extends TestCase
     public function when_a_post_get_deleted_its_comments_are_deleted()
     {
       $this->signIn();
-      
+      $post = factory(Post::class)->make(['user_id' =>  $this->user->id]);
       $comment =  factory('App\Comment')
-              ->make(['user_id' => $this->user->id ,'post_id' => $this->post->id]);
+              ->make(['user_id' => $this->user->id ,'post_id' => $post->id]);
 
-      $this->post($this->post->path().'/comment',$comment->toArray());
+      $this->post($post->path().'/comment',$comment->toArray());
 
-      $this->delete('/posts',$this->post->toArray());
+      $this->json('DELETE',$post->path());
 
+      $this->assertDatabaseMissing('posts',$post->toArray());
       $this->assertDatabaseMissing('comments',$comment->toArray());
     }
 }
