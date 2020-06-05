@@ -68,45 +68,44 @@ class CreatePostsTest extends TestCase
         ->assertSee($this->post->body);
         
     }
-
+    
     /** @test */
     public function a_post_can_be_updated()
     {
         $this->signIn();
-       
+        
         $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
-
+        
         $this->patchJson($post->path(),[
             'title'  =>  'am a title',
             'body'   =>  'am a body'
-        ]);
+            ]);
+            
+            $this->assertEquals('am a title',$post->fresh()->title);
+            $this->assertEquals('am a body',$post->fresh()->body);
+            
+        }
         
-        $this->assertEquals('am a title',$post->fresh()->title);
-        $this->assertEquals('am a body',$post->fresh()->body);
-
-    }
-
-    /** @test */
-    public function guests_can_not_delete_posts()
-    {
-        $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+        /** @test */
+        public function guests_can_not_delete_posts()
+        {
+            $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+            
+            $response  = $this->delete($post->path())
+            ->assertStatus(302);
+        }
         
-        $response  = $this->delete($post->path());
-
-        $response->assertStatus(302);
+        /** @test */
+        public function a_post_can_be_deleted()
+        {
+            $this->signIn();
+            
+            $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
+            
+            $response  = $this->json('DELETE',$post->path())
+            ->assertStatus(204);
+            
+            $this->assertDatabaseMissing('posts',$this->post->toArray());
+        }
     }
     
-    /** @test */
-    public function a_post_can_be_deleted()
-    {
-        $this->signIn();
-        
-        $post = factory(Post::class)->create(['user_id' =>  $this->user->id]);
-        
-        $response  = $this->json('DELETE',$post->path());
-
-        $response->assertStatus(204);
-        
-        $this->assertDatabaseMissing('posts',$this->post->toArray());
-    }
-}

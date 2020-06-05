@@ -18,13 +18,13 @@ class PostTest extends TestCase
       $this->user = create('App\User');
    }
    
-         /** @test */
-         public function posts_db_has_the_expected_coulmns()
-         {
-            $this->assertTrue( 
-               Schema::hasColumns('posts', [
-                  'id','user_id','title', 'body'
-                  ]), 1);
+   /** @test */
+   public function posts_db_has_the_expected_coulmns()
+   {
+      $this->assertTrue( 
+         Schema::hasColumns('posts', [
+            'id','user_id','title', 'body'
+            ]), 1);
          }
          
          /** @test */
@@ -63,6 +63,7 @@ class PostTest extends TestCase
             $post->addComment([ 'body'  =>  'some body','user_id' => 1]);
             
             $this->assertEquals(1,$post->comments->count());
+            $this->assertEquals('some body',$post->comments->first()->body);
          }
          
          /** @test */
