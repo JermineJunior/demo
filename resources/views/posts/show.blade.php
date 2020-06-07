@@ -60,7 +60,7 @@
         <div class="px-20 mt-2 py-2 mx-8 border-b -mx-6">
             <div class="text-gray-700 flex items-center justify-between">
                 <p class="text-sm">{{ $comment->body }}</p>
-                <small>by {{ $comment->owner->name }}</small>
+                <small>by <a href="{{ route('profile',$comment->owner->name ) }}">{{ $comment->owner->name }}</a></small>
             </div>
         </div>     
         @endforeach
@@ -71,7 +71,7 @@
                 @csrf
                 <div class='flex flex-wrap -mx-3 mb-6'>
                     <div class='w-full md:w-full px-3 mb-2'>
-                        <textarea class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' name="body" placeholder='Type Your Comment' required></textarea>
+                        <textarea class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner font-medium placeholder-gray-700 focus:outline-none focus:bg-white' name="body" placeholder='Type Your Comment' required></textarea>
                     </div>
                     <div class='w-full flex items-center justify-between md:w-full px-3 my-1'>
                         <div class="flex items-center w-1/2 text-gray-700 px-2">

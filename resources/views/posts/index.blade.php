@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="px-6 py-8">
+    <div class="flex items-center justify-between px-6 mr-3 md:mr-8">
+        <a href="#" class="text-xl text-blue-400 font-semibold ">
+            Post
+        </a>
+        <a href="/posts/create" class="px-2 py-1 rounded-lg shadow-lg bg-blue-500 text-gray-100">
+            Create Post
+        </a>
+    </div>
     <div class="flex justify-between container mx-auto">
         <div class="w-full lg:w-8/12">
             <div class="items-center flex-wrap px-4 mt-8 mr-4">
