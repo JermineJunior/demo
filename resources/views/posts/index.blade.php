@@ -20,7 +20,7 @@
                         <a class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500" href="#">Laravel</a>
                     </div>
                     <div class="mt-2">
-                        <a class="text-2xl text-gray-700 font-bold hover:underline" href="#">{{ $post->title }}</a>
+                        <h3 class="text-xl text-gray-700 font-bold capitalize">{{ $post->title }}</h3>
                         <p class="mt-2 text-gray-600">{{ $post->body }}</p>
                     </div>
                     <div class="flex justify-between items-center mt-4">
@@ -50,14 +50,13 @@
                             <img class="w-10 h-10 object-cover rounded-full mx-4" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=731&q=80" alt="avatar">
                             <p>
                                 <a class="text-gray-700 font-bold mx-1 hover:underline" href="{{ route('profile',$user->name) }}">{{ $user->name }}</a>
-                                <span class="text-gray-700 text-sm font-light">created {{ $user->posts->count() }} posts</span>
                             </p>
                         </li>
                         @endforeach
                     </ul>
                 </div>
             </div>
-            {{-- end authors --}}
+            <!-- end authors -->
             <div class="mt-10 px-8">
                 <h1 class="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
                 <div class="flex flex-col bg-white px-8 py-6 max-w-sm mx-auto rounded-lg shadow-md">

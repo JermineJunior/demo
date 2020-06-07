@@ -1,5 +1,5 @@
 <body class="bg-gray-200">
-    <nav id="header" class="w-full z-30 top-0 py-1 bg-white shadow-lg border-b border-blue-400">
+    <nav id="header" class="w-full z-30 top-0 py-1 bg-white shadow-lg border-t border-blue-400">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-2">
             
             <label for="menu-toggle" class="cursor-pointer md:hidden block">
@@ -13,13 +13,9 @@
             <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
                 <nav>
                     <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
-                        <li class="inline-block no-underline hover:text-black font-medium text-lg px-4 lg:-ml-2">
-                            <img src="{{ asset('images/logo.png') }}" alt="brand" class="w-10">
-                        </li>
-                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/">Home</a></li>
-                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="{{ route('posts.index') }}">Posts</a></li>
-                        <li><a class="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">About</a></li>
-                        <li> <input type="search" name="" class="appearance-none  md:hidden rounded-lg mx-3 block w-1/2 bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ..."></li>
+                        <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="/">Home</a></li>
+                        <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="{{ route('posts.index') }}">Posts</a></li>
+                        <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="#">About</a></li>
                     </ul>
                 </nav>
             </div>
@@ -35,7 +31,7 @@
                 </a>
                 @endif
                 @else
-                <input type="search" name="" class="appearance-none hidden md:block rounded-lg block w-full bg-gray-300 text-gray-700 border border-gray-100 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Search ...">
+               <p class="text-base text-blue-600 ">{{ auth()->user()->name }}</p>
                 <a href="{{ route('logout') }}"
                 class="no-underline hover:text-gray-800 text-blue-600 text-base py-3 px-4"
                 onclick="event.preventDefault();
