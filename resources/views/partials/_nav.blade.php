@@ -15,7 +15,7 @@
                     <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
                         <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="/">Home</a></li>
                         <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="{{ route('posts.index') }}">Posts</a></li>
-                        <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="#">About</a></li>
+                        <li><a class="inline-block text-gray-700 no-underline hover:text-blue-600 font-medium text-lg py-6 -mb-3 px-4 lg:-ml-2 border-b border-transparent hover:border-blue-500" href="#">My Posts</a></li>
                     </ul>
                 </nav>
             </div>
@@ -31,7 +31,6 @@
                 </a>
                 @endif
                 @else
-               <p class="text-base text-blue-600 ">{{ auth()->user()->name }}</p>
                 <a href="{{ route('logout') }}"
                 class="no-underline hover:text-gray-800 text-blue-600 text-base py-3 px-4"
                 onclick="event.preventDefault();

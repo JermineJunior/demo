@@ -37,7 +37,6 @@ class User extends Authenticatable
       return $this->hasMany(Comment::class);
     }
 
-
     public function updatePostsCount($post,$update)
     {
         if($update == 'inc')
