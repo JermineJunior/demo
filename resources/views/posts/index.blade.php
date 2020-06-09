@@ -37,7 +37,6 @@
                     Sorry No posts yet.
                 </span>
                 @endforelse
-                {{ $posts->links('vendor.pagination.semantic-ui') }}
             </div>
         </div>
         <div class="-mx-8 w-4/12 hidden lg:block mr-4">
