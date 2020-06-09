@@ -58,9 +58,19 @@
         <h2 class="px-6 py-3 text-gray-800">Comments:</h2>
         @foreach ($post->comments as $comment)
         <div class="px-20 mt-2 py-2 mx-8 border-b -mx-6">
-            <div class="text-gray-700 flex items-center justify-between">
-                <p class="text-sm">{{ $comment->body }}</p>
-                <small>by <a href="{{ route('profile',$comment->owner->name ) }}">{{ $comment->owner->name }}</a></small>
+            <div class="text-gray-700 flex items-center">
+                <div class="mr-1 mb-6">
+                    <img class="w-10 h-10 object-cover rounded-full mx-4" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=731&q=80" alt="avatar">
+                </div>
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold">
+                        {{ $comment->owner->name }}
+                    </h3>
+                    <p class="mt-2 text-gray-700">
+                        {{ $comment->body }}
+                    </p>
+                    <small class="text-xs text-gray-600">{{ $comment->created_at->diffForHumans() }} .Reply</small>
+                </div>
             </div>
         </div>     
         @endforeach
