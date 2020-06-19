@@ -57,7 +57,7 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         if($post->user_id != auth()->id()){
-            if (request()->wantsJson()) return response(["status" =>  "you are not authorized"],403);
+            if (request()->wantsJson()) return response(["status" =>  "you are not authorized to delete this post"],403);
             return redirect('/login',403);
         }
         $post->delete();
@@ -67,11 +67,4 @@ class PostsController extends Controller
         
     }
     
-    public function filterPosts(User $username)
-    {
-        $posts = Post::where('user_id',$username->id);
-        
-        $posts = $posts->get();
-        return view('posts.index',compact('posts'));
-    }
 }

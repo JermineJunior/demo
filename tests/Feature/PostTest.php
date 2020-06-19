@@ -65,7 +65,7 @@ class PostTest extends TestCase
         ->assertSee($comment->body);
     }
 
-    /**  */
+    /**  
     public function a_user_can_filter_posts_by_user_name()
     {
         $user = factory(User::class)->create();
@@ -78,5 +78,5 @@ class PostTest extends TestCase
               ->assertSee($userPost->title)
                 ->assertDontSee($anotherPost->title);
     }
-    
+    */
 }
