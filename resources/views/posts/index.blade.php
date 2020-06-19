@@ -38,6 +38,7 @@
                 </span>
                 @endforelse
             </div>
+            {{ $posts->links('vendor.pagination/semantic-ui') }}
         </div>
         <div class="-mx-8 w-4/12 hidden lg:block mr-4">
             <div class="px-8">

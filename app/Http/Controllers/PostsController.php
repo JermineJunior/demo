@@ -15,7 +15,7 @@ class PostsController extends Controller
     
     public function index()
     {
-        $posts = $posts = Post::latest()->get();
+        $posts = $posts = Post::latest()->paginate(10);
         
         $users = User::where('posts_count','>','0')->get();
         
