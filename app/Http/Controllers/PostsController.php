@@ -69,8 +69,7 @@ class PostsController extends Controller
     
     public function filterPosts(User $username)
     {
-        $user = $username;
-        $posts = Post::where('user_id',$user->id);
+        $posts = Post::where('user_id',$username->id);
         
         $posts = $posts->get();
         return view('posts.index',compact('posts'));

@@ -24,7 +24,7 @@
                         <p class="mt-2 text-gray-600">{{ $post->body }}</p>
                     </div>
                     <div class="flex justify-between items-center mt-4">
-                        <a class="text-blue-500 hover:underline" href="{{ route('posts.show',$post->slug) }}">Read more</a>
+                        {{-- <a class="text-blue-500 hover:underline" href="{{ route('posts.show',$post->slug) }}">Read more</a> --}}
                         <div>
                             <a class="flex items-center" href="{{ route('profile',$post->owner->name) }}">
                                 <h1 class="text-gray-700 font-bold hover:underline">{{ $post->owner->name }}</h1>
